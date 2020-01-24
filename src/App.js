@@ -1,26 +1,48 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import {
+  Row
+} from 'react-bootstrap'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import './App.css';
+const firebase = require('firebase');
+
+class App extends Component {
+
+  state = {
+    myNotes:null,
+    isLoading:true
+  }
+
+  componentDidMount() {
+    firebase.firestore()
+    .collection('my-notes')
+    .onSnapshot(serverUpdate =>{
+      const note = serverUpdate.docs.map(_doc => {
+        const data = _doc.data();
+        data['id'] = _doc.id;
+        return data
+      })
+
+      this.setState({
+        myNotes:note,
+        isLoading:false
+      })
+
+    })
+  }
+
+  render() {
+    const { myNotes,isLoading } = this.state
+    console.log(myNotes)
+    return(
+      <>
+      {isLoading ? <p>loading</p> : 
+        <Row>
+          <p>tes</p>
+        </Row>}
+      </>
+    )
+  }
 }
 
 export default App;
