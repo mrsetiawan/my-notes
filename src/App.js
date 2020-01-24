@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import {
-  Row
-} from 'react-bootstrap'
+import { Row } from 'react-bootstrap';
+import Sidebar from '../src/components/sidebar/Sidebar'
+import Editor from '../src/components/editor/Editor'
 
 import './App.css';
 const firebase = require('firebase');
@@ -38,7 +38,8 @@ class App extends Component {
       <>
       {isLoading ? <p>loading</p> : 
         <Row>
-          <p>tes</p>
+          <Sidebar />
+          <Editor />
         </Row>}
       </>
     )
