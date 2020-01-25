@@ -1,0 +1,14 @@
+.listSidebar {
+  border-bottom:1px solid #eadede;
+  margin-bottom:15px;
+}
+
+.listSidebar:hover {
+  background: #f3f3f3;
+  cursor: pointer;
+}
+
+.listSidebar:active {
+  background: #f3f3f3;
+  cursor: pointer;
+}

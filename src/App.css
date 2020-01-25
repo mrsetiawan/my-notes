@@ -2,3 +2,14 @@
   --margin:0;
   --padding:0;
 }
+
+html ,body {
+  padding: var(--pading);
+  margin: var(--margin);
+  /* overflow: hidden; */
+}
+
+.app-container {
+  height: 100%;
+  box-sizing: border-box;
+}

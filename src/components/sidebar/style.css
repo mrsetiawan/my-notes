@@ -1,0 +1,10 @@
+.sidebarContainer {
+    margin-top: 0px;
+    height: 100%;
+    box-sizing: border-box;
+    float: left;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+
+  
