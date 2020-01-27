@@ -14,6 +14,8 @@ export class Sidebar extends Component {
     title: null
   }
 
+  selectedNoteChild1 = (n,i) => this.props.selectedNoteParent(n,i)
+
   newNote = () => {
     this.setState({
       addNote: !this.state.addNote,
@@ -46,7 +48,8 @@ export class Sidebar extends Component {
               <div key={_index}>
                 <SidebarItem 
                 _note={_note}
-                _index
+                _index={_index}
+                selectedNoteChild1={this.selectedNoteChild1}
               />
               </div>
             )

@@ -8,12 +8,15 @@ import {
 } from 'react-bootstrap'
 
 export class SidebarItem extends Component {
+
+  selectedNoteChild2 = (n,i) => this.props.selectedNoteChild1(n,i)
+
   render() {
     const { _note, _index } = this.props
     return (
-      <Col className='listSidebar'>
+      <Col className='listSidebar' key={_index}>
         <Row>
-          <Col md={9}>
+          <Col md={9} onClick={() => this.selectedNoteChild2(_note, _index)}>
             <p className="mb-0"><b>{_note.title}</b></p>
             <small>{removeHTMLTags(_note.content.substring(0,30)) + '...'}</small>
           </Col>

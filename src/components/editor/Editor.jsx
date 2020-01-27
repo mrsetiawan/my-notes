@@ -5,14 +5,13 @@ import {
   Row
 } from 'react-bootstrap'
 
-
 export class Editor extends Component {
   render() {
+    const { selectedNote } = this.props
+    console.log(`editor ${selectedNote.title}`)
     return (
       <Col md={10}>
         <ReactQuill
-          value=''
-          onChange=''
         />
       </Col>
     )

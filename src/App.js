@@ -11,6 +11,8 @@ class App extends Component {
 
   state = {
     myNotes: null,
+    selectedNote:null,
+    selectedNoteIndex:null,
     isLoading: true
   }
 
@@ -32,15 +34,27 @@ class App extends Component {
       })
   }
 
+  selectedNoteParent = (n,i) => {
+    this.setState({
+      selectedNote:n, 
+      selectedNoteIndex:i
+    })
+  }
+
   render() {
-    const { myNotes, isLoading } = this.state
+    const { myNotes, isLoading,selectedNote } = this.state
     return (
       <div className='app-container'>
         {isLoading ? 
         <p>loading</p> :
         <Row className='m-0'>
-          <Sidebar myNotes={myNotes} />
-          <Editor />
+          <Sidebar 
+            myNotes={myNotes}
+            selectedNoteParent={this.selectedNoteParent} 
+          />
+          <Editor 
+            selectedNote={selectedNote} 
+          />
         </Row>}
       </div>
     )
