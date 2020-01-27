@@ -34,12 +34,8 @@ class App extends Component {
       })
   }
 
-  selectedNoteParent = (n,i) => {
-    this.setState({
-      selectedNote:n, 
-      selectedNoteIndex:i
-    })
-  }
+  selectedNoteParent = (n,i) => this.setState({ selectedNote:n,selectedNoteIndex:i})
+    
 
   render() {
     const { myNotes, isLoading,selectedNote } = this.state
@@ -52,9 +48,12 @@ class App extends Component {
             myNotes={myNotes}
             selectedNoteParent={this.selectedNoteParent} 
           />
-          <Editor 
-            selectedNote={selectedNote} 
-          />
+          {selectedNote ? 
+            <Editor 
+              selectedNote={selectedNote} 
+            />
+          : null}
+          
         </Row>}
       </div>
     )
