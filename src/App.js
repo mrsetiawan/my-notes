@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Row,Container } from 'react-bootstrap';
+import { Row } from 'react-bootstrap';
 import Sidebar from '../src/components/sidebar/Sidebar'
 import Editor from '../src/components/editor/Editor'
-import 'bootstrap/dist/css/bootstrap.min.css';
-
+import 'bootstrap/dist/css/bootstrap.min.css'
+import { newNoteModel } from './model/newNoteModel'
 import './App.css';
 const firebase = require('firebase');
 
@@ -13,7 +13,7 @@ class App extends Component {
     myNotes: null,
     selectedNote:null,
     selectedNoteIndex:null,
-    isLoading: true
+    isLoading: true,
   }
 
   componentDidMount() {
@@ -34,11 +34,24 @@ class App extends Component {
       })
   }
 
+  newNote = title => {
+    
+    const model = {...newNoteModel}
+
+    const newNote = {
+      model,title:title,
+      model,content:''
+    }
+
+    console.log(newNote)
+  }
+
   selectedNoteParent = (n,i) => this.setState({ selectedNote:n,selectedNoteIndex:i})
     
 
   render() {
     const { myNotes, isLoading,selectedNote } = this.state
+
     return (
       <div className='app-container'>
         {isLoading ? 
@@ -47,6 +60,7 @@ class App extends Component {
           <Sidebar 
             myNotes={myNotes}
             selectedNoteParent={this.selectedNoteParent} 
+            newNote={this.newNote}
           />
           {selectedNote ? 
             <Editor 

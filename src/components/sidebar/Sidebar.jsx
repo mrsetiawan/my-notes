@@ -23,7 +23,12 @@ export class Sidebar extends Component {
     })
   }
 
-  updateTitle = text => {this.setState({title:text})}
+  updateTitle = txt => this.setState({title:txt})
+
+  submitNote = () => {
+    this.props.newNote(this.state.title)
+    this.setState({title:null,addNote:null})
+  }
 
   render() {
     const { addNote } = this.state
@@ -36,9 +41,9 @@ export class Sidebar extends Component {
             <Form.Control 
               type="text" 
               placeholder="Input note.." 
-              onKeyUp={(text) => this.updateTitle(text.target.value)}
+              onChange={(txt)=> this.updateTitle(txt.target.value)}
             />
-            <Button variant="success" block>Submit</Button>
+            <Button variant="success" block onClick={this.submitNote}>Submit</Button>
           </>
           : null}
 
