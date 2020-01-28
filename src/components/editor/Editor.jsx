@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
 import ReactQuill from 'react-quill';
-import {
-  Col,
-  Row
-} from 'react-bootstrap'
+import { Col } from 'react-bootstrap'
 
 export class Editor extends Component {
 
@@ -21,10 +18,20 @@ export class Editor extends Component {
     })
   }
 
+  componentDidUpdate(){
+    if(this.props.selectedNote.id != this.state.id){
+      this.setState({
+        content:this.props.selectedNote.content,
+        title:this.props.selectedNote.title,
+        id:this.props.selectedNote.id
+      })
+    }
+  }
+
   render() {
     const { content, title, id} = this.state
     return (
-      <Col md={10}>
+      <Col md={10} style={{paddingLeft: '0 !important'}}>
         <ReactQuill
           value={content}
         />

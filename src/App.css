@@ -13,3 +13,18 @@ html ,body {
   height: 100%;
   box-sizing: border-box;
 }
+
+.quill {
+  height: 100%;
+  box-sizing: border-box;
+  width: calc(100%);
+  float: left;
+}
+.ql-container {
+  box-sizing: border-box;
+  height: calc(95.5%);
+  overflow-y: scroll;
+}
+.ql-editor {
+  cursor: text;
+}
