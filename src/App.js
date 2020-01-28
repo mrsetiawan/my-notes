@@ -44,7 +44,7 @@ class App extends Component {
     }
 
     const sentNote = await firebase
-      firebase.store()
+      firebase.firestore()
       .collection('my-notes')
       .add({
         title:newObjNote.title,
@@ -59,7 +59,7 @@ class App extends Component {
   selectedNoteParent = (n,i) => this.setState({ selectedNote:n,selectedNoteIndex:i})
 
   updateNote = (id, obj) => {
-    firebase.store()
+    firebase.firestore()
     .collection('my-notes')
     .doc(id)
     .update ({
