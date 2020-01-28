@@ -3,7 +3,7 @@
     min-height: 100vh;
     box-sizing: border-box;
     float: left;
-    overflow-y: scroll;
+    overflow-y: scroll !important;
     overflow-x: hidden;
     padding: 0 !important; 
   }

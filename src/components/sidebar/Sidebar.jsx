@@ -30,6 +30,8 @@ export class Sidebar extends Component {
     this.setState({title:null,addNote:null})
   }
 
+  deleteNote = note => this.props.deleteNote(note)
+
   render() {
     const { addNote } = this.state
     const { myNotes } = this.props
@@ -41,6 +43,7 @@ export class Sidebar extends Component {
             <Form.Control 
               type="text" 
               placeholder="Input note.." 
+              required="on"
               onChange={(txt)=> this.updateTitle(txt.target.value)}
             />
             <Button variant="success" block onClick={this.submitNote}>Submit</Button>
@@ -55,6 +58,7 @@ export class Sidebar extends Component {
                 _note={_note}
                 _index={_index}
                 selectedNoteChild1={this.selectedNoteChild1}
+                deleteNote={this.deleteNote}
               />
               </div>
             )
