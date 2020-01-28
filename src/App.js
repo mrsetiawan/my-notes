@@ -44,7 +44,7 @@ class App extends Component {
     }
 
     const sentNote = await firebase
-      .firestore()
+      firebase.store()
       .collection('my-notes')
       .add({
         title:newObjNote.title,
