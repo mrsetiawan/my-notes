@@ -34,19 +34,40 @@ class App extends Component {
       })
   }
 
-  newNote = title => {
+  newNote = async (title) => {
     
     const model = {...newNoteModel}
 
-    const newNote = {
+    const newObjNote = {
       model,title:title,
       model,content:''
     }
 
-    console.log(newNote)
+    const sentNote = await firebase
+      .firestore()
+      .collection('my-notes')
+      .add({
+        title:newObjNote.title,
+        content:newObjNote.content,
+        timestamp:firebase.firestore.FieldValue.serverTimestamp()
+      })
+      
+    // const newId = sentNote.id
+    // console.log(newId)
   }
 
   selectedNoteParent = (n,i) => this.setState({ selectedNote:n,selectedNoteIndex:i})
+
+  updateNote = (id, obj) => {
+    firebase.store()
+    .collection('my-notes')
+    .doc(id)
+    .update ({
+      title: obj.title,
+      content:obj.content,
+      timestamp:firebase.firestore.FieldValue.serverTimestamp()
+    })
+  }
     
 
   render() {
@@ -65,6 +86,7 @@ class App extends Component {
           {selectedNote ? 
             <Editor 
               selectedNote={selectedNote} 
+              updateNote={this.updateNote}
             />
           : null}
           

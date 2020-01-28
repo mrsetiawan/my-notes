@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import ReactQuill from 'react-quill';
+import ReactQuill from 'react-quill'
 import { Col } from 'react-bootstrap'
+import debounce from '../../helpers'
 
 export class Editor extends Component {
 
@@ -28,12 +29,26 @@ export class Editor extends Component {
     }
   }
 
+  updateBody = async (content) => {
+    await this.setState({ content:content })
+    this.update()
+  }
+
+  update = debounce(() => {
+    this.props.updateNote(
+      this.state.id,
+      {content:this.state.content, title:this.state.title}
+    )
+  }, 1500)
+
   render() {
     const { content, title, id} = this.state
+
     return (
       <Col md={10} style={{paddingLeft: '0 !important'}}>
         <ReactQuill
           value={content}
+          onChange={this.updateBody}
         />
       </Col>
     )
