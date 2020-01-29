@@ -1,11 +1,11 @@
 .sidebarContainer {
-    margin-top: 0px;
-    min-height: 100vh;
-    box-sizing: border-box;
-    float: left;
-    overflow-y: scroll !important;
-    overflow-x: hidden;
-    padding: 0 !important; 
-  }
+  margin-top: 0px;
+  min-height: 100vh;
+  box-sizing: border-box;
+  float: left;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding: 0 !important; 
+}
 
   

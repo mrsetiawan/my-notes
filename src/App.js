@@ -26,6 +26,9 @@ class App extends Component {
           return data
         })
 
+        note.sort((a,b) => a - b)
+        console.log(note)
+
         this.setState({
           myNotes: note,
           isLoading: false
@@ -40,8 +43,8 @@ class App extends Component {
     const model = {...newNoteModel}
 
     const newObjNote = {
-      title:title,
-      content:''
+      model,title:title,
+      model,content:''
     }
 
     const sentNote = await
@@ -83,7 +86,7 @@ class App extends Component {
     }
 
     firebase.firestore()
-    .collection('my-note')
+    .collection('my-notes')
     .doc(note.id)
     .delete();
   }
